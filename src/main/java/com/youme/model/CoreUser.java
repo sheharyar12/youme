@@ -1,6 +1,7 @@
 package com.youme.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -10,6 +11,7 @@ import java.util.List;
 @Document(collection = "core-user")
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Data
 public class CoreUser {
 
@@ -17,5 +19,6 @@ public class CoreUser {
     private Double rating;
     private List<Friends> friends;
     private List<Interactions> interactions;
+    private List<TotalRateCount> totalRatingCounts;
 
 }

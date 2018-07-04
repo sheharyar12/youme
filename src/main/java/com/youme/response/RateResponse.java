@@ -1,20 +1,17 @@
-package com.youme.model;
+package com.youme.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.bson.BsonDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Data
-public class Interactions {
+public class RateResponse {
 
+    private String message;
     private String email;
-    private String rating;
-    private Boolean ratedToday;
-    private BsonDateTime date;
 
 }

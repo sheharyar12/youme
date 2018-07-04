@@ -1,5 +1,6 @@
 package com.youme.controller;
 
+import com.youme.model.CoreUser;
 import com.youme.model.UserDetails;
 import com.youme.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @Slf4j
@@ -27,11 +29,12 @@ public class SecurityController {
 
     @RequestMapping(value = "/user/login", method = RequestMethod.GET)
     @ResponseBody
-    public UserDetails loginUser(Principal principal) {
+    public Optional<CoreUser> loginUser(Principal principal) {
         OAuth2Authentication oAuth2Authentication = (OAuth2Authentication) principal;
         Authentication authentication = oAuth2Authentication.getUserAuthentication();
         Map<String, String> details = (Map<String, String>) authentication.getDetails();
-        return userService.loginUser(details);
+        UserDetails userDetails = userService.giveGoogleUserDetails(details);
+        return userService.coreUserLogin(userDetails);
     }
 
 
