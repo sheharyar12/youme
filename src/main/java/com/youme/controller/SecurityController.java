@@ -33,4 +33,6 @@ public class SecurityController {
         Map<String, String> details = (Map<String, String>) authentication.getDetails();
         return userService.loginUser(details);
     }
+
+
 }
